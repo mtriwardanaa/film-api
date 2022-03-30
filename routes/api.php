@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('oauth/token', 'AccessTokenController@issueToken');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

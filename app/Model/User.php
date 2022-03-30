@@ -32,11 +32,15 @@ class User extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['name', 'username', 'password', 'level', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'email', 'username', 'password', 'level', 'remember_token', 'created_at', 'updated_at'];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function findForPassport($username) {
+        return $this->where('username', $username)->first();
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -50,6 +50,37 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        $class = get_class($exception);
+        if ($class == 'League\OAuth2\Server\Exception\OAuthServerException') {
+            return response()->json([
+                'status'  => false,
+                'message' => $exception->getMessage(),
+                'code'    => $exception->getHttpStatusCode(),
+            ],
+
+            $exception->getHttpStatusCode());
+        }
+
+        if ($class == 'Laravel\Passport\Exceptions\OAuthServerException') {
+            return response()->json([
+                'status'  => false,
+                'message'=> "username atau password salah",
+                'code'    => 200
+            ],
+
+            200);
+        }
+
+        if ($class == 'Illuminate\Auth\AuthenticationException') {
+            return response()->json([
+                'status'  => false,
+                'message'=> 'Unauthenticated.',
+                'code'    => 401
+            ],
+
+            401);
+        }
+
         return parent::render($request, $exception);
     }
 }
