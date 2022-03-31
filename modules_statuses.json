@@ -1,4 +1,7 @@
 {
     "Movie": true,
-    "User": true
+    "User": true,
+    "Category": true,
+    "Genre": true,
+    "Country": true
 }

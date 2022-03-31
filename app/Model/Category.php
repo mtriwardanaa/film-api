@@ -45,7 +45,7 @@ class Category extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
+    public function parent()
     {
         return $this->belongsTo('App\Model\Category', 'parent_id');
     }

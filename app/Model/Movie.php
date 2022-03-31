@@ -37,24 +37,21 @@ class Movie extends Model
      */
     protected $keyType = 'integer';
 
-    protected $appends  = ['encript', 'encript_category'];
+    protected $appends  = ['encript'];
 
     /**
      * @var array
      */
-    protected $fillable = ['category_id', 'title', 'cover', 'source', 'trailer', 'desc', 'duration', 'quality', 'release_date', 'rating', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'cover', 'source', 'trailer', 'desc', 'duration', 'quality', 'release_date', 'rating', 'coming_soon', 'created_at', 'updated_at'];
 
     protected $hidden = [
-        'id', 'category_id'
+        'id'
     ];
 
     public function getEncriptAttribute() {
         return Crypt::encryptString($this->id);
     }
 
-    public function getEncriptCategoryAttribute() {
-        return Crypt::encryptString($this->category_id);
-    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
