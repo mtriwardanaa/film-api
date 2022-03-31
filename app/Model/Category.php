@@ -34,6 +34,14 @@ class Category extends Model
         'id', 'parent_id'
     ];
 
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
+
+    public function getEncriptParentAttribute() {
+        return Crypt::encryptString($this->parent_id);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

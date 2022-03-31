@@ -34,6 +34,18 @@ class MovieCountry extends Model
         'id', 'movie_id', 'country_id'
     ];
 
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
+
+    public function getEncriptMovieAttribute() {
+        return Crypt::encryptString($this->movie_id);
+    }
+
+    public function getEncriptCountryAttribute() {
+        return Crypt::encryptString($this->country_id);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

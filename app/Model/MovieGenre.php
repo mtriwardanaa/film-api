@@ -34,6 +34,18 @@ class MovieGenre extends Model
         'id', 'movie_id', 'genre_id'
     ];
 
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
+
+    public function getEncriptMovieAttribute() {
+        return Crypt::encryptString($this->movie_id);
+    }
+
+    public function getEncriptGenreAttribute() {
+        return Crypt::encryptString($this->genre_id);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

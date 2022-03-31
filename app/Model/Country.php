@@ -32,6 +32,10 @@ class Country extends Model
         'id'
     ];
 
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

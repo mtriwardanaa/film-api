@@ -33,6 +33,14 @@ class MovieTag extends Model
         'id', 'movie_id'
     ];
 
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
+
+    public function getEncriptMovieAttribute() {
+        return Crypt::encryptString($this->movie_id);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

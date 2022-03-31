@@ -35,6 +35,18 @@ class MovieRating extends Model
         'id', 'movie_id', 'user_id'
     ];
 
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
+
+    public function getEncriptMovieAttribute() {
+        return Crypt::encryptString($this->movie_id);
+    }
+
+    public function getEncriptUserAttribute() {
+        return Crypt::encryptString($this->user_id);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

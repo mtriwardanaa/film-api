@@ -51,6 +51,10 @@ class Movie extends Model
     public function getEncriptAttribute() {
         return Crypt::encryptString($this->id);
     }
+
+    public function getEncriptCategoryAttribute() {
+        return Crypt::encryptString($this->category_id);
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
