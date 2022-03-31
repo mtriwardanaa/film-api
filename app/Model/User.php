@@ -5,6 +5,7 @@ namespace App\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * @property integer $id
@@ -29,14 +30,20 @@ class User extends Authenticatable
      */
     protected $keyType = 'integer';
 
+    protected $appends  = ['encript'];
+
     /**
      * @var array
      */
     protected $fillable = ['name', 'email', 'username', 'password', 'level', 'remember_token', 'created_at', 'updated_at'];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'id'
     ];
+
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
 
     public function findForPassport($username) {
         return $this->where('username', $username)->first();

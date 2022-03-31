@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * @property integer $id
@@ -22,10 +23,16 @@ class Category extends Model
      */
     protected $keyType = 'integer';
 
+    protected $appends  = ['encript', 'encript_parent'];
+
     /**
      * @var array
      */
     protected $fillable = ['parent_id', 'name', 'created_at', 'updated_at'];
+
+    protected $hidden = [
+        'id', 'parent_id'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

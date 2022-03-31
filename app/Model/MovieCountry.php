@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * @property integer $id
@@ -22,10 +23,16 @@ class MovieCountry extends Model
      */
     protected $keyType = 'integer';
 
+    protected $appends  = ['encript', 'encript_movie', 'encript_country'];
+
     /**
      * @var array
      */
     protected $fillable = ['movie_id', 'country_id', 'created_at', 'updated_at'];
+
+    protected $hidden = [
+        'id', 'movie_id', 'country_id'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

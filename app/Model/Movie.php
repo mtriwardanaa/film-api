@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * @property integer $id
@@ -36,11 +37,20 @@ class Movie extends Model
      */
     protected $keyType = 'integer';
 
+    protected $appends  = ['encript', 'encript_category'];
+
     /**
      * @var array
      */
     protected $fillable = ['category_id', 'title', 'cover', 'source', 'trailer', 'desc', 'duration', 'quality', 'release_date', 'rating', 'created_at', 'updated_at'];
 
+    protected $hidden = [
+        'id', 'category_id'
+    ];
+
+    public function getEncriptAttribute() {
+        return Crypt::encryptString($this->id);
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

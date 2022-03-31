@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * @property integer $id
@@ -20,10 +21,16 @@ class Genre extends Model
      */
     protected $keyType = 'integer';
 
+    protected $appends  = ['encript'];
+
     /**
      * @var array
      */
     protected $fillable = ['name', 'created_at', 'updated_at'];
+
+    protected $hidden = [
+        'id'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
