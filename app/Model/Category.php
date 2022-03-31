@@ -53,8 +53,8 @@ class Category extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function movies()
+    public function movieCategories()
     {
-        return $this->hasMany('App\Model\Movie');
+        return $this->hasMany('App\Model\MovieCategory');
     }
 }

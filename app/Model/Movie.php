@@ -68,6 +68,11 @@ class Movie extends Model
         return $this->hasMany('App\Model\MovieActor');
     }
 
+    public function movieCategories()
+    {
+        return $this->hasMany('App\Model\MovieCategory');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
